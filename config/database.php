@@ -15,10 +15,10 @@ $choix = "ORM";
 /** 
  * Turn to on or off your database
  */
-$etat = 'off'; //on or off
+$etat = 'on'; //on or off
 
 $orm = array(
-              'dbname' => 'samanemvcorm_test',//change your database name
+              'dbname' => 'Appli_CFP-GETECH_Flutter_API_Samane',//change your database name
               'user'     => 'root',
               'password' => '',
               'host' => '127.0.0.1',
