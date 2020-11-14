@@ -3,33 +3,25 @@ use Doctrine\ORM\Annotation as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @Entity 
- * @Table(name="lieu")
+ * @Table(name="profil")
  **/
-class Lieu
+class Profil
 {
     /** @Id @Column(type="integer") @GeneratedValue **/
     private $id;
     /** @Column(type="string") **/
     private $nom;
-    /** @Column(type="decimal") **/
-    private $longitude;
-    /** @Column(type="decimal") **/
-    private $latitude;
+
      /**
-     * One lieu has many formations. This is the inverse side.
-     * @OneToMany(targetEntity="Formation", mappedBy="lieu")
+     * One profil has many candidats. This is the inverse side.
+     * @OneToMany(targetEntity="Candidat", mappedBy="profil")
      */
-    private $formations;
-    /**
-     * Many Lieux have one user. This is the owning side.
-     * @ManyToOne(targetEntity="User", inversedBy="lieux")
-     * @JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
+    private $candidat;
+
     
     public function __construct()
     {
-        $this->formations = new ArrayCollection();
+        $this->candidat = new ArrayCollection();
     }
     public function getId()
     {
