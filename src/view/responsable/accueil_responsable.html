@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Ouverture Compte Bancaire</title>
+    <meta charset="utf-8" />
+    <!-- <link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css" /> -->
+    <link type="text/css" rel="stylesheet" href="{$url_base}public/css/script_index.css" />
+</head>
+
+<body>
+
+<header>
+    <h1>BIENVENUE DANS LE CENTRE CFP-GETECH</h1>
+</header>
+{if isset($insertionOk) }
+<div class="alert alert-danger" style="width: 30%; margin: auto; text-align: center;">
+    {$insertionOk}
+</div>
+{/if}
+<h2>VEILLEZ CHOISIR LE TYPE DE CLIENT A ENREGISTRER</h2>
+
+<div class="accueil_responsable">
+
+    <a href="{$url_base}ClientNonSalarie/compteClientNonSalarie">Compte Client non Salarié</a>
+
+    <a href="{$url_base}ClientSalarie/compteClientSalarie">Compte Client Salarié</a>
+
+    <a href="{$url_base}ClientMoral/compteClientMoral">Compte Client Moral</a>
+
+</div>
+
+<script type="text/javascript" src="{$url_base}public/js/script_index.js"></script>
+
+</body>
+
+</html>

@@ -1,11 +1,37 @@
+<?php
+/* Smarty version 3.1.30, created on 2020-11-15 00:18:10
+  from "/opt/lampp/htdocs/mesprojets/Application_Gestion_CFP-GETECH/src/view/welcome/index.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_5fb065b2929e26_66992056',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5d51033af8abefa5778b28f7e17ad3f943d9c3a3' => 
+    array (
+      0 => '/opt/lampp/htdocs/mesprojets/Application_Gestion_CFP-GETECH/src/view/welcome/index.html',
+      1 => 1605395843,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5fb065b2929e26_66992056 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Page d'accueil Employés</title>
     <meta charset="utf-8" />
-    <link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="{$url_base}public/css/script_index.css" />
+    <link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/css/script_index.css" />
 
 
 </head>
@@ -26,16 +52,17 @@
 
 
     </div>
-    {if isset($error) }
+    <?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
     <div class="alert alert-danger" style="width: 20%; margin: auto;">
         Login ou mot de passe incorrecte
     </div>
-    {/if}
+    <?php }?>
 
     <div id="page_authentification">
 
 
-        <form id="formulaire_admin" action="{$url_base}Admin/verifieAdmin" method="POST" onsubmit="return controle_champs_admin()">
+        <form id="formulaire_admin" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Admin/verifieAdmin" method="POST" onsubmit="return controle_champs_admin()">
             <fieldset>
                 <legend>
                     <h3>Authentification Administrateur</h3>
@@ -54,7 +81,8 @@
 
         </form>
 
-        <form id="formulaire_responsable" action="{$url_base}Responsable/verifieResponsable" method="POST" onsubmit="return controle_champs_responsable()">
+        <form id="formulaire_responsable" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Responsable/verifieResponsable" method="POST" onsubmit="return controle_champs_responsable()">
             <fieldset>
                 <legend>
                     <h3>Authentification Responsable</h3>
@@ -93,9 +121,13 @@
     </div>
 
 
-    <script type="text/javascript" src="{$url_base}public/js/script_index.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/js/script_index.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 
-</html>
+</html><?php }
+}
