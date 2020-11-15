@@ -12,8 +12,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 use libs\system\Controller;
-use src\model\DepartementRepository;
-class DepartementController extends Controller
+use src\model\ProgrammeRepository;
+class ProgrammeController extends Controller
 {
     public function __construct()
     {
@@ -21,11 +21,12 @@ class DepartementController extends Controller
     }
 
 
-    //Recupération tous les départements
-    public function getAllDepartement()
+//=============================================Recupération des Programmes===============================================
+    //Recupération tous les Programmes
+    public function getAllProgramme()
     {
-        $departements = new DepartementRepository();
-        $resultat = $departements->getAllDepartement();
+        $programmes = new ProgrammeRepository();
+        $resultat = $programmes->getAllProgramme();
 
         if($resultat != null)
         {
@@ -33,14 +34,14 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $programme)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $programme = [
+                    "Id" => $programme->getId(),
+                    "Nom" => $programme->getNom(),
                 ];
 
-                $data['Departements'][] = $departement;
+                $data['Programmes'][] = $programme;
 
             }
 
@@ -56,19 +57,19 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun departement disponible";
+            $data['Warning'] = "Désolé! aucune formation disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }
     }
 
-//=============================================Recupération d'un département===============================================
+//=============================================Recupération d'un programme===============================================
 
-    public function getOneDepartement()
+    public function getOneProgramme()
     {
         extract($_POST);
-        $departement = new DepartementRepository();
-        $resultat = $departement->getOneDepartement($id);
+        $programme = new ProgrammeRepository();
+        $resultat = $programme->getOneProgramme($id);
 
         if($resultat != null)
         {
@@ -76,14 +77,14 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $programme)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $programme = [
+                    "Id" => $programme->getId(),
+                    "Nom" => $programme->getNom(),
                 ];
 
-                $data['Departement'][] = $departement;
+                $data['Programme'][] = $programme;
 
             }
             // On envoie le code réponse 200 OK
@@ -94,7 +95,7 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun département disponible";
+            $data['Warning'] = "Désolé! aucun programme disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }

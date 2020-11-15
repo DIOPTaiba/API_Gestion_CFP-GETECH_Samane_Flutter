@@ -12,20 +12,21 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 use libs\system\Controller;
-use src\model\DepartementRepository;
-class DepartementController extends Controller
+use src\model\ProfilRepository;
+class ProfilController extends Controller
 {
     public function __construct()
     {
         parent::__construct();
     }
 
+//==========================================Rcupérations des Profils============================================================
 
-    //Recupération tous les départements
-    public function getAllDepartement()
+    //Recupération tous les Profils
+    public function getAllProfil()
     {
-        $departements = new DepartementRepository();
-        $resultat = $departements->getAllDepartement();
+        $profils = new ProfilRepository();
+        $resultat = $profils->getAllProfil();
 
         if($resultat != null)
         {
@@ -33,21 +34,17 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $profil)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $profil = [
+                    "Id" => $profil->getId(),
+                    "Nom" => $profil->getNom(),
                 ];
 
-                $data['Departements'][] = $departement;
+                $data['Profils'][] = $profil;
 
             }
 
-            //return $this->view->load("welcome/index", $data);
-            //return $this->service->load("departement/getDepartement", $data);
-            /* var_dump($data);
-            die; */
             // On envoie le code réponse 200 OK
             http_response_code(200);
 
@@ -56,19 +53,19 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun departement disponible";
+            $data['Warning'] = "Désolé! aucun profil disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }
     }
 
-//=============================================Recupération d'un département===============================================
+//=============================================Recupération d'un Profil===============================================
 
-    public function getOneDepartement()
+    public function getOneProfil()
     {
         extract($_POST);
-        $departement = new DepartementRepository();
-        $resultat = $departement->getOneDepartement($id);
+        $profil = new ProfilRepository();
+        $resultat = $profil->getOneProfil($id);
 
         if($resultat != null)
         {
@@ -76,14 +73,14 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $profil)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $profil = [
+                    "Id" => $profil->getId(),
+                    "Nom" => $profil->getNom(),
                 ];
 
-                $data['Departement'][] = $departement;
+                $data['Profil'][] = $profil;
 
             }
             // On envoie le code réponse 200 OK
@@ -94,7 +91,7 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun département disponible";
+            $data['Warning'] = "Désolé! aucun profil disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }

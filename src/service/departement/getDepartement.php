@@ -11,79 +11,57 @@ header("Access-Control-Max-Age: 3600");
 //Permet de définir les headers autorisés côté clients
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+use libs\system\Controller;
 use src\model\DepartementRepository;
-
-
-
-// On vérifie que la méthode utilisée est correcte
-if($_SERVER['REQUEST_METHOD'] == 'GET')
+class DepartementService //extends Controller
 {
-
-    // On instancie le model OperationDB
-    $operations = new OperationsDB();
-
-    // On récupère les données
-    $resultats = $operations->getAll();
-
-    // On vérifie si on a au moins 1 produit
-    if(count($resultats) > 0)
+    public function __construct()
     {
-        // On initialise un tableau associatif
-        $data = [];
-        $data['operation'] = [];
+        parent::__construct();
+    }
 
-        // On parcourt les operations
-        //while($row = $resultats->fetch(PDO::FETCH_ASSOC)){
-        foreach ($resultats as $resultat)
+
+    //Recupération tous les départements
+    public function getAllDepartement()
+    {
+        $departements = new DepartementRepository();
+        $resultat = $departements->getAllDepartement();
+
+        if($resultat != null)
         {
-            //on test si c'est virement (compte destinataire non nul)
-            if($resultat->getIdCompteDestinataire()){
-                $operation = [
-                    "id" => $resultat->getId(),
-                    "id_compte_source" => $resultat->getIdCompteSource()->getNumeroCompte(),
-                    "id_compte_destinataire" => $resultat->getIdCompteDestinataire()->getNumeroCompte(),
-                    "type_operation" => $resultat->getTypeOperation(),
-                    "montant" => $resultat->getMontant(),
-                    "date_operation" => $resultat->getDateOperation(),
-                ];
+            // On initialise un tableau associatif
+            $data = [];
+            $data['departement'] = [];
 
-                $data['operation'][] = $operation;
-            }
-            //si c'est pas virement compte destinataire est vide
-            else
+            foreach($resultat as $departement)
             {
-                $operation = [
-                    "id" => $resultat->getId(),
-                    "id_compte_source" => $resultat->getIdCompteSource()->getNumeroCompte(),
-                    //"id_compte_destinataire" => $resultat->getIdCompteDestinataire()->getNumeroCompte(),
-                    "type_operation" => $resultat->getTypeOperation(),
-                    "montant" => $resultat->getMontant(),
-                    "date_operation" => $resultat->getDateOperation(),
+                $departement = [
+                    "id" => $departement->getId(),
+                    "nom" => $departement->getNom(),
                 ];
 
-                $data['operation'][] = $operation;
+                $data['departement'][] = $departement;
+
             }
+
+            // On envoie le code réponse 200 OK
+            http_response_code(200);
+
+            // On encode en json et on envoie
+            echo json_encode($data);
         }
-
-        // On envoie le code réponse 200 OK
-        http_response_code(200);
-
-        // On encode en json et on envoie
-        echo json_encode($data);
-    }
-    else
-    {
-        $data['Warning'] = "Désolé! aucune opération disponible";
-        // On encode en json et on envoie
-        echo json_encode($data);
+        else
+        {
+            $data['Warning'] = "Désolé! aucune opération disponible";
+            // On encode en json et on envoie
+            echo json_encode($data);
+        }
     }
 
-}
-//Si la méthode n'est pas GET
-else
-{
-    // On gère l'erreur
-    http_response_code(405);
-    echo json_encode(["message" => "La méthode utilisée n'est pas autorisée"]);
+
 }
 
+
+
+
+?>

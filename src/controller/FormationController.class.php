@@ -12,20 +12,20 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 use libs\system\Controller;
-use src\model\DepartementRepository;
-class DepartementController extends Controller
+use src\model\FormationRepository;
+class FormationController extends Controller
 {
     public function __construct()
     {
         parent::__construct();
     }
 
-
-    //Recupération tous les départements
-    public function getAllDepartement()
+//=============================================Recupération de toutes les formations===============================================
+    //Recupération tous les formations
+    public function getAllFormation()
     {
-        $departements = new DepartementRepository();
-        $resultat = $departements->getAllDepartement();
+        $formations = new FormationRepository();
+        $resultat = $formations->getAllFormation();
 
         if($resultat != null)
         {
@@ -33,21 +33,17 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $formation)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $formation = [
+                    "Id" => $formation->getId(),
+                    "Nom" => $formation->getNom(),
                 ];
 
-                $data['Departements'][] = $departement;
+                $data['Formations'][] = $formation;
 
             }
 
-            //return $this->view->load("welcome/index", $data);
-            //return $this->service->load("departement/getDepartement", $data);
-            /* var_dump($data);
-            die; */
             // On envoie le code réponse 200 OK
             http_response_code(200);
 
@@ -56,19 +52,19 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun departement disponible";
+            $data['Warning'] = "Désolé! aucune formation disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }
     }
 
-//=============================================Recupération d'un département===============================================
-
-    public function getOneDepartement()
+//=============================================Recupération d'une formations===============================================
+    //Recupération tous les formations
+    public function getOneFormation()
     {
         extract($_POST);
-        $departement = new DepartementRepository();
-        $resultat = $departement->getOneDepartement($id);
+        $formation = new FormationRepository();
+        $resultat = $formation->getOneFormation($id);
 
         if($resultat != null)
         {
@@ -76,14 +72,14 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
+            foreach($resultat as $formation)
             {
-                $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                $formation = [
+                    "Id" => $formation->getId(),
+                    "Nom" => $formation->getNom(),
                 ];
 
-                $data['Departement'][] = $departement;
+                $data['Formation'][] = $formation;
 
             }
             // On envoie le code réponse 200 OK
@@ -94,7 +90,7 @@ class DepartementController extends Controller
         }
         else
         {
-            $data['Warning'] = "Désolé! aucun département disponible";
+            $data['Warning'] = "Désolé! aucune formation disponible";
             // On encode en json et on envoie
             echo json_encode($data);
         }
