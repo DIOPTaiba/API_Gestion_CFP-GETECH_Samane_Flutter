@@ -13,8 +13,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 use libs\system\Controller;
 use src\model\CandidatRepository;
-use src\model\ProfilRepository;
-use \src\model\FormationRepository;
 
 class CandidatController extends Controller
 {
@@ -83,27 +81,29 @@ class CandidatController extends Controller
             && !empty($donnees->email) && !empty($donnees->sexe) && !empty($donnees->formation) && !empty($donnees->profil)){
 
         //Si tous les champs sont ok on fait le traitement pour ajouter le candidat
-            //on recupère le profil sélectionné
-            $getProfil = new ProfilRepository();
-            $profil = $getProfil->getOneProfil($donnees->profil);
-//var_dump($profil);die();
-            //on recupère la formation sélectionnée
-            $getFormation = new FormationRepository();
-            $formation = $getFormation->getOneFormation($donnees->formation);
-//var_dump($formation);die();
-            $newCandidat = new CandidatRepository();
 
-            $newCandidat->nom = $donnees->nom;
-            $newCandidat->prenom = $donnees->prenom;
-            $newCandidat->adresse = $donnees->adresse;
-            $newCandidat->telephone = $donnees->telephone;
-            $newCandidat->email = $donnees->email;
-            $newCandidat->sexe = $donnees->sexe;
-            $newCandidat->id_formation = $formation;
-            $newCandidat->id_profil = $profil;
+            $candidatDb = new CandidatRepository();
+
+            //on recupère le profil sélectionné
+            $profil = $candidatDb->getProfil($donnees->profil);
+            //on recupère la formation sélectionnée
+            $formation = $candidatDb->getFormation($donnees->formation);
+
+            $newCandidat = new Candidat();
+
+            $newCandidat->setNom($donnees->nom);
+            $newCandidat->setPrenom($donnees->prenom);
+            $newCandidat->setAdresse($donnees->adresse);
+            $newCandidat->setTelephone($donnees->telephone);
+            $newCandidat->setEmail($donnees->email);
+            $newCandidat->setSexe($donnees->sexe);
+            $newCandidat->setFormation($formation);
+            $newCandidat->setProfil($profil);
+
+            $result = $candidatDb->addCandidat($newCandidat);
 
         //On ajout le client et on vérifie
-            if ($newCandidat->addCandidat($newCandidat)){
+            if ($result != 0){
 
                 //si tout est ok on envoie message ok avec le code 201
                 http_response_code(201);

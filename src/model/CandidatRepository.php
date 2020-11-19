@@ -23,9 +23,26 @@ class CandidatRepository extends Model{
     //Ajoiut d'un candidat
     public function addCandidat($candidat)
     {
-        $this->db->persist($candidat);
-        $this->db->flush();
+        if ($candidat != null){
+            $this->db->persist($candidat);
+            $this->db->flush();
+            return 1;
+        }else return 0;
+
     }
 
+    //Recupéreration formation candidat
+    public function getFormation($id)
+    {
+        $formation =  $this->db->find('Formation',$id);
+        return $formation;
+    }
+
+    //Recupéreration profil candidat
+    public function getProfil($id)
+    {
+        $profil =  $this->db->find('Profil',$id);
+        return $profil;
+    }
 
 }

@@ -72,16 +72,16 @@ class FormationController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $formation)
-            {
+//            foreach($resultat as $formation)
+//            {
                 $formation = [
-                    "Id" => $formation->getId(),
-                    "Nom" => $formation->getNom(),
+                    "Id" => $resultat->getId(),
+                    "Nom" => $resultat->getNom(),
                 ];
 
                 $data['Formation'][] = $formation;
 
-            }
+            //}
             // On envoie le code réponse 200 OK
             http_response_code(200);
 

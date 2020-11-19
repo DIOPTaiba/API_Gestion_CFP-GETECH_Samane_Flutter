@@ -73,16 +73,16 @@ class ProfilController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $profil)
-            {
+//            foreach($resultat as $profil)
+//            {
                 $profil = [
-                    "Id" => $profil->getId(),
-                    "Nom" => $profil->getNom(),
+                    "Id" => $resultat->getId(),
+                    "Nom" => $resultat->getNom(),
                 ];
 
                 $data['Profil'][] = $profil;
 
-            }
+//            }
             // On envoie le code réponse 200 OK
             http_response_code(200);
 

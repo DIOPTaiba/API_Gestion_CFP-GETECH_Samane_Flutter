@@ -23,7 +23,7 @@ class ProfilRepository extends Model{
     //Recupéreration d'un profil
     public function getOneProfil($id)
     {
-        $profil =  $this->db->getRepository('Profil')->findBy(['id'=>$id]);
+        $profil =  $this->db->find('Profil',$id);
         return $profil;
     }
 

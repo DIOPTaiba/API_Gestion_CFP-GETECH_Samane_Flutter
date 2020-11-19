@@ -23,7 +23,7 @@ class FormationRepository extends Model{
     //Recupéreration d'une formation
     public function getOneFormation($id)
     {
-        $formation =  $this->db->getRepository('Formation')->findBy(['id'=>$id]);
+        $formation =  $this->db->find('Formation',$id);
         return $formation;
     }
 

@@ -29,7 +29,7 @@ class Formation
     private $programme;
     /**
      * One Formation has many candidats. This is the inverse side.
-     * @OneToMany(targetEntity="Candidat", mappedBy="formation")
+     * @OneToMany(targetEntity="Candidat", mappedBy="formation", cascade={"persist","remove"})
      */
     private $candidat;
 
