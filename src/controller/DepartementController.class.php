@@ -22,7 +22,7 @@ class DepartementController extends Controller
 
 
     //Recupération tous les départements
-    public function getAllDepartement()
+    public function index()
     {
         $departements = new DepartementRepository();
         $resultat = $departements->getAllDepartement();
@@ -76,16 +76,16 @@ class DepartementController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $departement)
-            {
+//            foreach($resultat as $departement)
+//            {
                 $departement = [
-                    "Id" => $departement->getId(),
-                    "Nom" => $departement->getNom(),
+                    "Id" => $resultat->getId(),
+                    "Nom" => $resultat->getNom(),
                 ];
 
                 $data['Departement'][] = $departement;
 
-            }
+            //}
             // On envoie le code réponse 200 OK
             http_response_code(200);
 
@@ -100,6 +100,48 @@ class DepartementController extends Controller
         }
     }
 
+//=========================================Recupération formations d'un département===============================================
+    //Recupération tous les départements
+    public function formationDepartement($id)
+    {
+        //extract($_POST);
+        $departements = new DepartementRepository();
+        $resultat = $departements->getFormationByDepartement($id);
+
+        if($resultat != null)
+        {
+            // On initialise un tableau associatif
+            //$data = [];
+            //$data['departement'] = [];
+
+            foreach($resultat as $formation)
+            {
+                $formations = [
+                    "Id" => $formation->getId(),
+                    "Nom" => $formation->getNom(),
+                ];
+
+                $data['Formations'][] = $formations;
+
+            }
+
+            //return $this->view->load("welcome/index", $data);
+            //return $this->service->load("departement/getDepartement", $data);
+            /* var_dump($data);
+            die; */
+            // On envoie le code réponse 200 OK
+            http_response_code(200);
+
+            // On encode en json et on envoie
+            echo json_encode($data);
+        }
+        else
+        {
+            $data['Warning'] = "Désolé! aucune formation disponible pour ce département";
+            // On encode en json et on envoie
+            echo json_encode($data);
+        }
+    }
 
 
 }

@@ -23,7 +23,7 @@ class ProgrammeController extends Controller
 
 //=============================================Recupération des Programmes===============================================
     //Recupération tous les Programmes
-    public function getAllProgramme()
+    public function index()
     {
         $programmes = new ProgrammeRepository();
         $resultat = $programmes->getAllProgramme();
@@ -77,16 +77,16 @@ class ProgrammeController extends Controller
             //$data = [];
             //$data['departement'] = [];
 
-            foreach($resultat as $programme)
-            {
+//            foreach($resultat as $programme)
+//            {
                 $programme = [
-                    "Id" => $programme->getId(),
-                    "Nom" => $programme->getNom(),
+                    "Id" => $resultat->getId(),
+                    "Nom" => $resultat->getNom(),
                 ];
 
                 $data['Programme'][] = $programme;
 
-            }
+            //}
             // On envoie le code réponse 200 OK
             http_response_code(200);
 

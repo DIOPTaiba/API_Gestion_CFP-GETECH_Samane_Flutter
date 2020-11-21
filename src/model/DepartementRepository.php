@@ -23,8 +23,15 @@ class DepartementRepository extends Model{
     //Recupéreration d'un département
     public function getOneDepartement($id)
     {
-        $departement =  $this->db->getRepository('Departement')->findBy(['id'=>$id]);
+        $departement =  $this->db->find('Departement',$id);
         return $departement;
+    }
+
+    //Recupéreration de toutes les formations par département
+    public function getFormationByDepartement($id)
+    {
+        $formations = $this->db->getRepository('Formation')->findBy(['departement'=>$id]);
+        return $formations;
     }
 
 

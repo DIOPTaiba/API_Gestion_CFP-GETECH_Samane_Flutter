@@ -23,7 +23,7 @@ class ProfilController extends Controller
 //==========================================Rcupérations des Profils============================================================
 
     //Recupération tous les Profils
-    public function getAllProfil()
+    public function index()
     {
         $profils = new ProfilRepository();
         $resultat = $profils->getAllProfil();

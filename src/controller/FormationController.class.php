@@ -22,7 +22,7 @@ class FormationController extends Controller
 
 //=============================================Recupération de toutes les formations===============================================
     //Recupération tous les formations
-    public function getAllFormation()
+    public function index()
     {
         $formations = new FormationRepository();
         $resultat = $formations->getAllFormation();

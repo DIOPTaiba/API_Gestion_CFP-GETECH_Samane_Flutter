@@ -24,7 +24,7 @@ class CandidatController extends Controller
 //==========================================Rcupérations des Candidats============================================================
 
     //Recupération tous les Candidats
-    public function getAllCandidat()
+    public function index()
     {
         $candidats = new CandidatRepository();
         $resultat = $candidats->getAllCandidat();

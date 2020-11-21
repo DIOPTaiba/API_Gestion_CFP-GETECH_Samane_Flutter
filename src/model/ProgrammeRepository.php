@@ -23,7 +23,7 @@ class ProgrammeRepository extends Model{
     //Recupéreration d'un programme
     public function getOneProgramme($id)
     {
-        $programme =  $this->db->getRepository('Programme')->findBy(['id'=>$id]);
+        $programme =  $this->db->find('Programme',$id);
         return $programme;
     }
 

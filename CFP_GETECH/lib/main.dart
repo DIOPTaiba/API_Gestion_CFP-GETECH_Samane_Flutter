@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   final menu = [
     {'title': 'Home', 'icon': Icon(Icons.home), 'page': Departement()},
     {'title': 'Départements', 'icon': Icon(Icons.account_tree), 'page': Departement()},
-    {'title': 'Formations', 'icon': Icon(Icons.work), 'page': Formation()},
+    //{'title': 'Formations', 'icon': Icon(Icons.work), 'page': Formation()},
     {'title': 'Contacts', 'icon': Icon(Icons.contact_mail), 'page': Contact()},
   ];
   @override
