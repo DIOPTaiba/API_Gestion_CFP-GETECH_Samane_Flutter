@@ -96,6 +96,49 @@ class FormationController extends Controller
         }
     }
 
+//=========================================Recupération programmes dune formation===============================================
+
+    public function programmes($id)
+    {
+        //extract($_POST);
+        $formations = new FormationRepository();
+        $resultat = $formations->getProgrammeByFormation($id);
+
+        if($resultat != null)
+        {
+            // On initialise un tableau associatif
+            //$data = [];
+            //$data['departement'] = [];
+
+            foreach($resultat as $programme)
+            {
+                $programme = [
+                    "Id" => $programme->getId(),
+                    "Nom" => $programme->getNom(),
+                ];
+
+                $data['Programmes'][] = $programme;
+
+            }
+
+            //return $this->view->load("welcome/index", $data);
+            //return $this->service->load("departement/getDepartement", $data);
+            /* var_dump($data);
+            die; */
+            // On envoie le code réponse 200 OK
+            http_response_code(200);
+
+            // On encode en json et on envoie
+            echo json_encode($data);
+        }
+        else
+        {
+            $data['Warning'] = "Désolé! aucun programme disponible pour cette formation";
+            // On encode en json et on envoie
+            echo json_encode($data);
+        }
+    }
+
 
 
 }

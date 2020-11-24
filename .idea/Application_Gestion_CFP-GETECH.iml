@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../API_Gestion_CFP-GETECH_Samane_Flutter/proguard_logs" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -43,7 +56,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

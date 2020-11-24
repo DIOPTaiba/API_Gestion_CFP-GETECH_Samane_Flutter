@@ -102,7 +102,7 @@ class DepartementController extends Controller
 
 //=========================================Recupération formations d'un département===============================================
     //Recupération tous les départements
-    public function formationDepartement($id)
+    public function formations($id)
     {
         //extract($_POST);
         $departements = new DepartementRepository();

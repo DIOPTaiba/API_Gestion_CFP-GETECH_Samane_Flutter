@@ -1,10 +1,11 @@
+import 'package:CFP_GETECH/programme.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert'; //pour convertir le format json
 //pour créer une page Départements
 class Formation extends StatefulWidget {
-  dynamic departement;
-  Formation(this.departement);
+  dynamic formations;
+  Formation(this.formations);
   @override
   _FormationState createState() => _FormationState();
 }
@@ -14,7 +15,7 @@ class _FormationState extends State<Formation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('${widget.departement['Nom']}'),),
+      appBar: AppBar(title: Text('${widget.formations['Nom']}'),),
       body: Center(
         //Si la liste n'est pas encore chargée on affiche 1 cercle de progression
         // si chargée on affiche la liste
@@ -37,7 +38,7 @@ class _FormationState extends State<Formation> {
                       onPressed: (){
                         Navigator.push(context,
                             MaterialPageRoute(
-                                builder: (context)=>new Formation(listeFormations[index])
+                                builder: (context)=>new Programme(listeFormations[index])
                             )
                         );
                       },
@@ -58,7 +59,7 @@ class _FormationState extends State<Formation> {
     afficheFormations();
   }
   void afficheFormations() {
-    String url = "http://192.168.1.14:1105/Departement/formationDepartement/${widget.departement['Id']}";
+    String url = "http://192.168.0.100:1105/Departement/formations/${widget.formations['Id']}";
     http.get(url).then((response) {
       setState(() {
         this.listeFormations = json.decode(response.body)["Formations"];
