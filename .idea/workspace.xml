@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="92303470-6283-4b5e-b59f-f8e14b9d6c98" name="Default Changelist" comment="ajout entité departement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFP_GETECH/lib/departement.dart" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/lib/departement.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFP_GETECH/lib/formation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/lib/formation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CFP_GETECH/lib/formCandidat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/lib/formCandidat.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFP_GETECH/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CFP_GETECH/lib/programme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/lib/programme.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CFP_GETECH/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CFP_GETECH/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CandidatController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CandidatController.class.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/CFP_GETECH/.pub/" />
     <ignored path="$PROJECT_DIR$/CFP_GETECH/build/" />
@@ -102,9 +99,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
-              <folding>
-                <element signature="e#718#745#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -222,6 +216,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,9 +270,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -349,11 +343,12 @@
       <workItem from="1606574156981" duration="7561000" />
       <workItem from="1606597884041" duration="927000" />
       <workItem from="1606599440006" duration="5377000" />
+      <workItem from="1606672067705" duration="1443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90988000" />
+    <option name="totallyTimeSpent" value="92431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -377,7 +372,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22964169" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.6726384" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="13" />
@@ -550,9 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
-          <folding>
-            <element signature="e#718#745#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

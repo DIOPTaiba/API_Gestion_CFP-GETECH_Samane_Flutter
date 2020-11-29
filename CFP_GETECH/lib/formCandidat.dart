@@ -47,7 +47,7 @@ class _CandidatureState extends State<Candidature> {
   //CandidatModel _candidat;
 
   //==============
-  // Boolean variable for CircularProgressIndicator.
+  // variable visible pour afficher une bare de progression lor de l'envoie du formulaire CircularProgressIndicator.
   bool visible = false;
 
   //déclaration attributs de control des champs de saisis
@@ -90,10 +90,10 @@ class _CandidatureState extends State<Candidature> {
       "profil": profil
     };
     final String apiUrl = "http://192.168.1.16:1105/Candidat/addCandidat";
-    // Starting Web API Call.
+    // Envoie des données vers le serveur
     var response = await http.post(apiUrl, body: json.encode(donnees));
 
-    // Getting Server response into variable.
+    // Recupération de la réponse du serveur.
     var message = jsonDecode(response.body);
 
     // If Web call Success than Hide the CircularProgressIndicator.
@@ -119,6 +119,21 @@ class _CandidatureState extends State<Candidature> {
     //       ],
     //     );
     //   },
+    // );
+    // showDialog(
+    //   context: context,
+    //   builder: (_) => AlertDialog(
+    //     title: new Text("info insertion"),
+    //           actions: <Widget>[
+    //             FlatButton(
+    //               child: new Text("OK"),
+    //               onPressed: () {
+    //                 Navigator.of(context).pop();
+    //               },
+    //             ),
+    //           ],
+    //   ),
+    //   barrierDismissible: false,
     // );
   }
 

@@ -203,17 +203,16 @@ class _MyAppState extends State<MyApp> {
           children: [
             DrawerHeader(
               child: Center(
-                child: CircleAvatar(
-                  //pour que l'appli charge l'image il faut le préciser dans le fichier pubspec.lock
-                  // et à chaque fois qu'on a une nouvelle librairie ou une dépendance il faut l'ajouter dans ce fichier
-                  backgroundImage: AssetImage("./images/logo_cfp_getech.png"),
-                  radius: 50, //pour la taille de l'image
+                child: Image.asset(
+                  'images/logo.png',
+                  fit: BoxFit.fitWidth,
+                  width: 200,
+                  height: 200,
                 ),
               ),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Colors.teal, Colors.green //green
-              ])),
+                color: Colors.white//green
+              ),
             ),
             //Ceci permet d'ajouter facilement d'autres éléments dans le menus
             //quand on cré un map sur un attribut il faut créer une copie de l'attribut avec ...
