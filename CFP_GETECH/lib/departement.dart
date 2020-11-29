@@ -62,7 +62,7 @@ class _DepartementState extends State<Departement> {
   }
 
   void afficheDepartements() {
-    String url = "http://192.168.0.100:1105/Departement";
+    String url = "http://192.168.1.16:1105/Departement";
     http.get(url).then((response) {
       setState(() {
         this.listeDepartements = json.decode(response.body)["Departements"];

@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 //Permet de définir la méthode autorisée
 //header("Access-Control-Allow-Methods: GET");
 //Permet de définir la durée de vie de la requete
-header("Access-Control-Max-Age: 3600");
+//header("Access-Control-Max-Age: 3600");
 //Permet de définir les headers autorisés côté clients
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
@@ -71,11 +71,14 @@ class CandidatController extends Controller
 
     public function addCandidat()
     {
+        header("Access-Control-Allow-Methods: GET");
 
         //extract($_POST);
         //Recupération des données envoyées
         $donnees = json_decode(file_get_contents("php://input"));
-        //var_dump($donnees);die();
+//        echo $donnees->formation;
+//        var_dump($donnees->formation);
+        //die();
      // On vérifie que tous les champs sont renseignés
         if (!empty($donnees->nom) && !empty($donnees->prenom) && !empty($donnees->adresse) && !empty($donnees->telephone)
             && !empty($donnees->email) && !empty($donnees->sexe) && !empty($donnees->formation) && !empty($donnees->profil)){

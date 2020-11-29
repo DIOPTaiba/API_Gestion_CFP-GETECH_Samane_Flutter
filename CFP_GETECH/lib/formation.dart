@@ -59,7 +59,7 @@ class _FormationState extends State<Formation> {
     afficheFormations();
   }
   void afficheFormations() {
-    String url = "http://192.168.0.100:1105/Departement/formations/${widget.formations['Id']}";
+    String url = "http://192.168.1.16:1105/Departement/formations/${widget.formations['Id']}";
     http.get(url).then((response) {
       setState(() {
         this.listeFormations = json.decode(response.body)["Formations"];

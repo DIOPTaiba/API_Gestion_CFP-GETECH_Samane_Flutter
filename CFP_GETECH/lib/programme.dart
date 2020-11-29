@@ -15,38 +15,40 @@ class _ProgrammeState extends State<Programme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('${widget.programmes['Nom']}'),),
-      body: Center(
-        //Si la liste n'est pas encore chargée on affiche 1 cercle de progression
-        // si chargée on affiche la liste
-          child: this.listeProgrammes == null?CircularProgressIndicator():
-          ListView.builder(
-            itemCount: this.listeProgrammes == null?0:this.listeProgrammes.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Colors.teal,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      color: Colors.black26,
-                      child: Text(
-                        this.listeProgrammes[index]['Nom'],
-                        style: TextStyle(color: Colors.white, fontSize: 15),
+      body: Container(
+        child: Center(
+          //Si la liste n'est pas encore chargée on affiche 1 cercle de progression
+          // si chargée on affiche la liste
+            child: this.listeProgrammes == null?CircularProgressIndicator():
+            ListView.builder(
+              itemCount: this.listeProgrammes == null?0:this.listeProgrammes.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    color: Colors.teal,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RaisedButton(
+                        color: Colors.black26,
+                        child: Text(
+                          this.listeProgrammes[index]['Nom'],
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                        onPressed: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context)=>new Programme(listeProgrammes[index])
+                              )
+                          );
+                        },
                       ),
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(
-                                builder: (context)=>new Programme(listeProgrammes[index])
-                            )
-                        );
-                      },
                     ),
                   ),
-                ),
-              );
-            },
-          ),
+                );
+              },
+            ),
+        ),
       ),
     );
   }
@@ -60,7 +62,7 @@ class _ProgrammeState extends State<Programme> {
     afficheFormations();
   }
   void afficheFormations() {
-    String url = "http://192.168.0.100:1105/Formation/programmes/${widget.programmes['Id']}";
+    String url = "http://192.168.1.16:1105/Formation/programmes/${widget.programmes['Id']}";
     http.get(url).then((response) {
       setState(() {
         this.listeProgrammes = json.decode(response.body)["Programmes"];
